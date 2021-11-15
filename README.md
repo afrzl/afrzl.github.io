@@ -1,2 +1,2 @@
-# afrzl.github.io
-My Portfolio Website
+# Welcome to My Portfolio Website
+This website is made with HTML and CSS
