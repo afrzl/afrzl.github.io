@@ -11,6 +11,9 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" />
 
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!-- MyCSS -->
     <link rel="stylesheet" href="style.css" />
 
@@ -36,6 +39,9 @@
               <a class="nav-link" href="#projects">Projects</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#contact">Contact</a>
             </li>
           </ul>
@@ -48,7 +54,7 @@
     <section class="jumbotron text-center">
       <img src="img/3.jpg" alt="Muh Nur Afrizal" width="200" class="rounded-circle img-thumbnail" />
       <h1 class="display-8">Muh Nur Afrizal</h1>
-      <p class="lead">Student at Informatics Dept. of Sebelas Maret University</p>
+      <p class="lead"></p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#ffffff"
@@ -61,17 +67,17 @@
 
     <!-- About -->
     <section id="about">
-      <div class="container">
+      <div class="container" data-aos="fade-down" data-aos-duration="2000">
         <div class="row text-center mb-3">
           <div class="col">
             <h2>About Me</h2>
           </div>
         </div>
         <div class="row justify-content-center fs-5 text-center">
-          <div class="col-lg-4">
+          <div class="col-lg-4" data-aos="fade-right" data-aos-duration="2000">
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci eveniet a eaque, quas debitis eius magni aut eligendi ut et?</p>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4" data-aos="fade-left" data-aos-duration="2000" data-aos-delay="500">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui officiis ipsam aliquid quod sit modi. Vel aspernatur deserunt voluptas! Consectetur voluptate quos ut voluptatum sapiente?</p>
           </div>
         </div>
@@ -147,6 +153,70 @@
     </section>
     <!-- End Projects -->
 
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="container">
+        <div class="row text-center mb-3">
+          <div class="col">
+            <h2>Gallery</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-3">
+            <a href="">
+              <img src="img/gallery/thumbnail/1.jpg" alt="Gambar 1" class="img-fluid gallery-img" />
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="">
+              <img src="img/gallery/thumbnail/1.jpg" alt="Gambar 1" class="img-fluid gallery-img" />
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="">
+              <img src="img/gallery/thumbnail/2.jpg" alt="Gambar 2" class="img-fluid gallery-img" />
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="">
+              <img src="img/gallery/thumbnail/2.jpg" alt="Gambar 2" class="img-fluid gallery-img" />
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="">
+              <img src="img/gallery/thumbnail/3.jpg" alt="Gambar 3" class="img-fluid gallery-img" />
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="">
+              <img src="img/gallery/thumbnail/3.jpg" alt="Gambar 3" class="img-fluid gallery-img" />
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="">
+              <img src="img/gallery/thumbnail/4.jpg" alt="Gambar 4" class="img-fluid gallery-img" />
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="">
+              <img src="img/gallery/thumbnail/4.jpg" alt="Gambar 4" class="img-fluid gallery-img" />
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="">
+              <img src="img/gallery/thumbnail/5.jpg" alt="Gambar 5" class="img-fluid gallery-img" />
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="">
+              <img src="img/gallery/thumbnail/5.jpg" alt="Gambar 5" class="img-fluid gallery-img" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Gallery -->
+
     <!-- Contact -->
     <section id="contact">
       <div class="container">
@@ -195,12 +265,47 @@
 
     <!-- Footer -->
     <footer class="bg-primary text-white text-center pb-5">
-      <p>Created with <i class="bi bi-heart-fill text-danger"></i> by <a href="https://www.instagram.com/_afrizaal/" class="text-white fw-bold">Muh Nur Afrizal</a></p>
+      <p>Created with <i class="bi bi-heart-fill text-danger"></i> by <a href="https://www.instagram.com/_afrizaal/" class="text-white fw-bold" style="text-decoration: none">Muh Nur Afrizal</a></p>
     </footer>
     <!-- End Footer -->
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      const galleryImg = document.querySelectorAll(".gallery-img");
+      const card = document.querySelectorAll(".card");
+
+      galleryImg.forEach((img, i) => {
+        img.dataset.aos = "fade-down";
+        img.dataset.aosDelay = i * 200;
+        img.dataset.aosDuration = 1000;
+      });
+
+      card.forEach((div, i) => {
+        div.dataset.aos = "flip-left";
+        div.dataset.aosDelay = i * 100;
+        div.dataset.aosDuration = 500;
+      });
+
+      AOS.init({
+        duration: 500,
+      });
+    </script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
+    <script>
+      gsap.registerPlugin(TextPlugin);
+      gsap.to(".lead", { duration: 2, delay: 1.5, text: "Student at Informatics Dept. of Sebelas Maret University" });
+
+      gsap.from(".jumbotron img", { duration: 2, rotateY: 360, opacity: 0 });
+      gsap.from(".navbar", { duration: 1.5, y: "-100%", opacity: 0, ease: "bounce" });
+      gsap.from(".display-8", { duration: 1, y: -50, opacity: 0, delay: 0.5, ease: "back" });
+    </script>
 
     <!-- Script Send Form to Google Sheets -->
     <script>
