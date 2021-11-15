@@ -157,7 +157,11 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-lg-8">
-            <form>
+            <div class="alert alert-success alert-dismissible fade show d-none contact-alert" role="alert">
+              <strong>Thankyou!</strong> Your message has been successfully sent.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <form name="contact-me">
               <div class="mb-3">
                 <label for="name" class="form-label">Nama Lengkap</label>
                 <input type="text" class="form-control" name="name" id="name" aria-describedby="name" />
@@ -167,10 +171,14 @@
                 <input type="email" class="form-control" name="email" id="email" aria-describedby="email" />
               </div>
               <div class="mb-3">
-                <label for="pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" name="pesan" id="pesan" rows="3"></textarea>
+                <label for="message" class="form-label">Pesan</label>
+                <textarea class="form-control" name="message" id="message" rows="3"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Kirim</button>
+              <button type="submit" class="btn btn-primary btn-send">Kirim</button>
+              <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
             </form>
           </div>
         </div>
@@ -193,5 +201,31 @@
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Script Send Form to Google Sheets -->
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwco-ckMGDuTINNwX66_MMzA2eQaeR8x2Z5rkBMH2xgr_YXetCVARiGGaC7VFKmYfcPLg/exec";
+      const form = document.forms["contact-me"];
+      const btnSend = document.querySelector(".btn-send");
+      const btnLoading = document.querySelector(".btn-loading");
+      const contactAlert = document.querySelector(".contact-alert");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        //ketika tombol submit diklik
+        //tampikan tombol loading, hilangkan tombol kirim
+        btnLoading.classList.toggle("d-none");
+        btnSend.classList.toggle("d-none");
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            console.log("Success!", response);
+            btnLoading.classList.toggle("d-none");
+            contactAlert.classList.toggle("d-none");
+            form.reset();
+            btnSend.classList.toggle("d-none");
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
